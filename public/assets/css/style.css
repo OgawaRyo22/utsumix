@@ -95,6 +95,8 @@ header{
 
 .h_nav ul li a{
 line-height: 2.5vh;
+      font-family: "myFont1";
+
 }
 
 .h_nav .utsumi{
