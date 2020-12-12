@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>form_of_utumix</title>
+</head>
+<body>
+
+<style>
+
+*{
+ margin: 0;
+ padding: 0;
+}
+
+#content{
+  width: 100vw;
+  overflow: scrool;
+  background-color: #333; 
+  display: grid;
+  grid-template-columns: 12.5vw 75vw 12.5vw;
+}
+
+.insert{
+  width: 100%;
+  grid-column: 2;
+  box-shadow: inset -1px 1px 16px 2px #000000;
+}
+
+input, textarea{
+  width: 100%;
+  display flex;
+}
+
+.texting{
+ height: 60vh;
+ overflow: scroll;
+ width: 80%;
+}
+
+.sinki{
+  margin-bottom: 16vh;
+  box-shadow: inset -1px 1px 16px 2px #000000;
+
+}
+
+.editing{
+ overflow: scroll;
+ height: 120vh;
+  box-shadow: inset -1px 1px 16px 2px #000000;
+
+}
+
+.ed_form{
+ overflow:scroll;
+ height: 60vh;
+ margin-bottom: 8vh;
+ width: 80%;
+  box-shadow: inset -1px 1px 16px 2px #000000;
+
+}
+
+</style>
+
+<div id="content">
+         
+
+<div class="insert">
+
+<div class="sinki">
+  <form action="/post" autconmplete="off" method="post">
+    <input type="text" placeholder="記事タイトル" name="title">
+    <div class="texting">
+      <textarea rows="100" cols="80" name="content">ここに内容を入力</textarea>
+   </div>
+    <input type="submit" value="投稿！">
+ 
+  </form>
+</div>
+
+  <div class="editing">
+    <% @posts.each do |post| %>
+      <div class="ed_form">
+    <form action="/post/<%= post.id %>" autconmplete="off" method="post">
+    <input type="text" value="<%= CGI.escapeHTML(post.title) %>" name="title">
+    <div class="texting">
+      <textarea rows="100" cols="80" name="content"><%= CGI.escapeHTML(post.content) %></textarea>
+   
+    </div>
+ <input type="submit" value="再投稿">
+
+    </form>
+    <form action="/post/<%= post.id %>/delete" autconmplete="off" method="post">
+    <input type="submit" value="削除">
+  </form>
+      </div>
+<% end %>
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

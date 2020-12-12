@@ -22,15 +22,34 @@
      <li><a href="/">TOP</a></li>
      <li><a href="/blog">BLOG</a></li>
      <li><a href="/biography">BIOGRAPHY</a></li> 
-     <li><a href="/works">EXHIBITION ・ LIVE PAINTS</li>
-     <li><a href="/activities">ACTIVITIES</li>
+     <li><a href="/works">EXHIBITION ・ LIVE PAINTS</a></li>
+     <li><a href="/activities">ACTIVITIES</a></li>
 
  </ul>
     </div>
  
 </header>
 
-<div class="container"></div>
+<div class="container">
+
+<div class="topic">
+    <p class="t_tit">NEWS</p>
+
+    <% @posts.each do |post| %>
+    <div class="archive">
+         <div class="ar_dis">
+         
+           <p class="ar_title"><%= post.title %></p>
+           <p class="ar_con"><%= post.content %></p>
+
+         </div>
+    </div>
+    <% end %>
+    
+    </div>
+
+
+</div>
 
 </div>
 

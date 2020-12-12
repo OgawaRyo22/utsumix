@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <title>works</title>
 </head>
@@ -11,9 +12,7 @@
          
 <header>
 
-<div class="h_img">
 
-    </div>
     
     <div class="h_nav">
     
@@ -22,15 +21,97 @@
      <li><a href="/">TOP</a></li>
      <li><a href="/blog">BLOG</a></li>
      <li><a href="/biography">BIOGRAPHY</a></li> 
-     <li><a href="/works">EXHIBITION ・ LIVE PAINTS</li>
-     <li><a href="/activities">ACTIVITIES</li>
+     <li><a href="/works">EXHIBITION ・ LIVE PAINTS</a></li>
+     <li><a href="/activities">ACTIVITIES</a></li>
+
 
  </ul>
     </div>
+
+
+
+ <div class="w_container">
+    
+<ul class="w_select">
+        <div></div>
+        <li><button class="b1980s" onclick="">1980 - 1994</button></li>        
+        <li><button class="b1995s" onclick="">1994 - 1999</button></li>        
+        <li><button class="b1997s" onclick="">1997,1999 PERU</button></li>        
+        <li><button class="b200ps" onclick="">2000 POLAND</button></li>        
+        <li><button class="b2000s" onclick="">2000 - 2010</button></li>
+        <li><button class="b2011s" onclick="">2011 - 2019</button></li>
+        <li><button class="b2020s" onclick="">2020 -</button></li>
+
+
+     </ul>
+     <div class="w_1980s">
+         
+          <div class="w_works_1"></div> 
+          <div class="w_works_2"></div>       
+          <div class="w_works_3"></div> 
+          <div class="w_works_4"></div>       
+         
+         
+     </div>   <div class="w_1995s">
+         
+          <div class="w_paints_1"></div> 
+          <div class="w_paints_2"></div>       
+          <div class="w_paints_3"></div> 
+          <div class="w_paints_4"></div>       
+         
+         
+     </div>   <div class="w_2000s">
+         
+          <div class="w_acting_1"></div> 
+          <div class="w_acting_2"></div>       
+          <div class="w_acting_3"></div> 
+          <div class="w_acting_4"></div>       
+         
+         
+     </div>
+    
+</div>
+
+<script>
+    
+    $(".b1980s").click(function(){
+        
+        $(".w_1980s").css("display", "grid");        
+        $(".w_1995s").css("display", "none");        
+        $(".w_2000s").css("display", "none");
+        $(".b1980s").css({"background-color":"#fff","color":"#000"});        
+        $(".b1995s").css({"background-color":"#000","color":"#fff"});        
+        $(".b2000s").css({"background-color":"#000","color":"#fff"});
+        console.log("fsgrh");
+        
+    }); $(".b1995s").click(function(){
+        
+        $(".w_1980s").css("display", "none");        
+        $(".w_1995s").css("display", "grid");        
+        $(".w_2000s").css("display", "none");
+        $(".b1995s").css({"background-color":"#fff","color":"#000"});
+        $(".b1980s").css({"background-color":"#000","color":"#fff"});        
+        $(".b2000s").css({"background-color":"#000","color":"#fff"}); 
+        console.log("fsgrh");
+        
+    }); $(".b2000s").click(function(){
+        
+        $(".w_1980s").css("display", "none");        
+        $(".w_1995s").css("display", "none");        
+        $(".w_2000s").css("display", "grid");
+        $(".b2000s").css({"background-color":"#fff","color":"#000"});
+        $(".b1995s").css({"background-color":"#000","color":"#fff"});        
+        $(".b1980s").css({"background-color":"#000","color":"#fff"}); 
+        console.log("fsgrh");
+        
+    });
+    
+    </script>
  
 </header>
 
-<div class="container"></div>
+
+
 
 </div>
 

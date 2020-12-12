@@ -11,12 +11,16 @@ enable :sessions
 
 get '/' do
     
+ @posts = Post.all
+
  erb :index
 
 end
 
 get '/blog' do
     
+ @posts = Post.all
+
  erb :blog
 
 end
@@ -39,5 +43,32 @@ get '/activities' do
 
 end
 
+get '/post' do 
 
+ @posts = Post.all
+ erb :insert
 
+end
+
+post '/post' do 
+  post = Post.create({
+
+    title: params[:title],
+  content: params[:content],
+  })
+  redirect '/post'
+end
+
+post '/post/:id/delete' do
+  post = Post.find(params[:id])
+  post.destroy
+  redirect '/post'
+end
+
+post '/post/:id' do
+  post = Post.find(params[:id])
+  post.title = params[:title]
+  post.content = params[:content]
+  post.save
+  redirect '/post'
+end

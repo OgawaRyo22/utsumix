@@ -6,6 +6,8 @@
 html {
 
  font-size: 1.25vw;
+    background-color: #000;
+    color: #fff;
 }
 
 p{
@@ -27,6 +29,12 @@ a, li{
     text-decoration: none;
 }
 
+button {
+    border: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 
 @font-face {
   font-family: "myFont";
@@ -36,6 +44,16 @@ a, li{
 @font-face {
   font-family: "myFont1";
   src: url("serif_bold.woff") format('woff');
+}
+
+@font-face {
+  font-family: "myFont2";
+  src: url("sans.woff") format('woff');
+}
+
+@font-face {
+  font-family: "myFont3";
+  src: url("sans_bold.woff") format('woff');
 }
 
 body{
@@ -48,25 +66,35 @@ body{
 #content{
     display: grid;
     width: 100vw;
-    grid-template-rows: 25% 75%;
-    height: 400vh;
+    grid-template-columns: auto 1280px auto;
+    height: calc(100vh * 4);
+    background-color: #000;
+}
+
+#fold{
+  width: 100%;
+  grid-column: 2;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 8% auto 8%;
+  grid-template-rows: 100vh auto;
 }
 
 header{
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-rows: 3vh 7vh auto 3vh;
-    grid-template-columns: 2vw auto 2vw;
-    margin-bottom: 2vh;
+    grid-template-rows: 3% 7% auto 3%;
+    margin-bottom: 8px;
     grid-row: 1;
+    grid-column: 2;
     line-height: 0;
+    background-color: #000;
 }
 
 .h_img{
         display: grid;
     grid-row: 3;
-    grid-column: 2;
     height: 100%;
     background-image: url(/assets/素材/1286250940.jpg);
     background-position: center;
@@ -77,13 +105,11 @@ header{
         display: grid;
     grid-template-columns: 25% 75%;
     grid-row: 2;
-    grid-column: 2;
     height: 100%;
     width: 100%;
 }
 
 .h_nav ul{
-    grid-column: 2;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -94,14 +120,15 @@ header{
 }
 
 .h_nav ul li a{
-line-height: 2.5vh;
+line-height: 18px;
       font-family: "myFont1";
     box-sizing: border-box;
+    font-size: 16px;
 
 }
 
 .h_nav ul li a:hover{
-box-shadow: 0px 0px 0 1px;
+box-shadow: inset -1px -1px 0 0px;
     box-sizing: border-box;
 }
 
@@ -111,25 +138,28 @@ box-shadow: 0px 0px 0 1px;
     align-items: flex-end;
     justify-content: flex-start;
       font-family: "myFont1";
-   font-size: 3.5vw;
+   font-size: 48px;
     height: 100%;
-    line-height: 7vh;
+    line-height: 50px;
 }
 
 .container{
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: grid;
-        grid-template-columns: 3% auto 3%;
+    grid-column: 2;
+
+        grid-template-columns: 73% 2% 25%;
     height: 100%;
     grid-template-rows: 25% 25% 25% 25%; 
     grid-row: 2;
     /* margin-top: -40vh; */
+    background-color: #000;
 }
 
 .topic{
     grid-row: 1;
-        grid-column: 2;
+        grid-column: 1;
     height: 100%;
 
 }
@@ -139,30 +169,230 @@ box-shadow: 0px 0px 0 1px;
     height: auto;
     margin-bottom: 0;
        font-family: "myFont1";
-   font-size: 1.5vw;
-    border-bottom: 1px #000 solid;
+    border-bottom: 1px #fff solid;
     height: auto;
-    margin-bottom: 2vh;
-       font-size: 3.5vw;
+    margin-bottom: 8px;
+       font-size: 48px;
  
-    line-height: 7vh;
+    line-height: 48px;
 }
 
 .archive{
     width: 100%;
     display: grid;
-    grid-template-columns: 60% 2% 38%;
+    grid-template-columns: 100%;
     grid-column: 2;
     height: 85%;
 }
 
-.ar_im{
+.ar_dis{
     grid-column: 1;
-    background-color: #000;
-    background-image: url(/assets/素材/raci.png);
+        font-family: "myFont2";
+}
+
+.ar_title{
+ font-size: 48px;
+}
+
+.ar_con{
+ font-size: 16px;
+}
+
+.minipro{
+    grid-column: 3;
+    width: 100%;
+}
+
+.mini_kao{
+    width: 80%;
+    height: auto;
+        height: 0;
+    padding-bottom: 80%;
+    display: block;
+
+    background-color: #fff;
+    background-image: url(/assets/素材/1448204060.png);
     background-size: cover;
 }
 
-.ar_dis{
-    grid-column: 3;
+.mini_tit{
+    margin-top: 16px;
 }
+
+.mini_tit .mini_name{
+    font-family: "myFont1";
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.mini_tit .mini_eng{
+    font-family: "myFont1";
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.mini_bio{
+    width: 100%;
+    font-size: 12px;
+    margin-top: 16px;
+    font-family: "myFont2";
+
+}
+
+.mini_bio .mini_jp{
+    margin-top: 12px;
+}
+
+/*
+○WORKS*/
+
+.w_container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 18% 2% 80%;
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.w_select{
+    display: grid;
+    grid-template-rows: 44% 8% 8% 8% 8% 8% 8% 8%;
+}
+
+.w_select li {
+    display: flex;
+    align-items: center;
+    font-family: "Myfont1";
+    cursor: pointer;
+    font-size: 1.8vw;
+}
+
+.w_select li button{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    text-align: left;
+}
+
+.w_select li button:focus{
+    
+    outline: none;
+}
+
+.w_select li button:hover{
+    box-shadow: inset #fff 0px 0px 0px 1px;
+}
+
+.w_1980s{
+    grid-column: 3;
+    width: 100%;
+    height: calc(100% - 1vh);
+ display: grid;
+    grid-template-rows:49% 51%;
+       grid-template-columns:40% auto;
+    grid-column-gap: 1vh;
+  grid-row-gap: 1vh;
+}
+.w_1995s{
+    grid-column: 3;
+    width: 100%;
+    height: calc(100% - 1vh);
+ display: none;
+    grid-template-rows:49% 51%;
+       grid-template-columns:40% auto;
+    grid-column-gap: 1vh;
+  grid-row-gap: 1vh;
+}
+.w_2000s{
+    grid-column: 3;
+    width: 100%;
+    height: calc(100% - 1vh);
+ display: none;
+    grid-template-rows:49% 51%;
+       grid-template-columns:40% auto;
+    grid-column-gap: 1vh;
+  grid-row-gap: 1vh;
+}
+
+
+.w_works_1{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/_1990977_orig.jpg);
+    background-size: cover;
+}.w_works_2{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/9585795_orig.jpg);
+     background-size: cover;
+}.w_works_3{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/2525736_orig.jpg);
+     background-size: cover;
+}.w_works_4{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/4504882_orig.jpg);
+     background-size: cover;
+}
+
+.w_paints_1{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+    background-size: cover;
+}.w_paints_2{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/9585795_orig.jpg);
+     background-size: cover;
+}.w_paints_3{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/2525736_orig.jpg);
+     background-size: cover;
+}.w_paints_4{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/4504882_orig.jpg);
+     background-size: cover;
+}
+
+.w_acting_1{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/_1990977_orig.jpg);
+    background-size: cover;
+}.w_acting_2{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/9585795_orig.jpg);
+     background-size: cover;
+}.w_acting_3{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+     background-size: cover;
+}.w_acting_4{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url(/assets/素材/4504882_orig.jpg);
+     background-size: cover;
+}
+

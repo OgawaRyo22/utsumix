@@ -2,15 +2,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <title>内海　信彦</title>
 </head>
 <body>
 
-<div id="content">
+  <div id="content">
+
+    <div id="fold">
          
 <header>
 
+ <div class="h_img">
+
+    </div>
 
     
     <div class="h_nav">
@@ -25,9 +31,6 @@
 
  </ul>
     </div>
- <div class="h_img">
-
-    </div>
  
  
 </header>
@@ -35,28 +38,49 @@
 <div class="container">
     
 <div class="topic">
-    <p class="t_tit">TOPICS</p>
-    
+    <p class="t_tit">NEWS</p>
+
+    <% @posts.each do |post| %>
     <div class="archive">
-        <div class="ar_im">
-        </div>
          <div class="ar_dis">
          
-         <p class="ar_title"></p>
-         <p class="ar_con">日本の極右も同じように、「武漢ウイルス」だの、「武漢ウイルス研究所起源説」だのとトランプが煽り立てるデマゴギーによるインフォデミックを感染拡大させています。<br>
+           <p class="ar_title"><%= post.title %></p>
+           <p class="ar_con"><%= post.content %></p>
 
-反安倍を称する一部のレイシストたちも、極右と一緒に「武漢ウイルス」だの、「武漢ウイルス研究所」だのと、反中嫌中の大合唱に加担しています。<br>
-
-一見もっともらしい言説を連ねるリベラル左派の一部も、反中嫌中キャンペーンに取り込まれて、よりにによって、トランプ、そして安倍晋三と全く同じ、排他的排外主義に転化してしまいました。<br>
-
-合州国のレイシストと変わらない、恥を知らない排他的排外主義者は、改憲や緊急事態条項などに至る前から、現代の転向者の仲間入りを果たしたのです。</p>
-        </div>
+         </div>
     </div>
+    <% end %>
     
+    </div>
+    <div class="minipro">
+        <div class="mini_kao"></div>
+                <div class="mini_tit">
+                    <p class="mini_name">内海 信彦</p>
+                    <p class="mini_eng">Nobuhiko Utsumi</p>
+                </div>
+                
+                <div class="mini_bio">
+                    <p class="mini_katagaki">
+                        -Visual artist<br>
+-Guest Artist at Harvard University<br>
+-Guest Artist at Yale University<br>
+-Professor Emeritus at the National Fine Arts School in Peru<br>
+-Guest Professor at the National University of Education in Peru<br>
+-Invited Researcher at Waseda University Organization for Japan-US Studies<br>
+-The President of "Utsumi, Nobuhiko's Dropout School" at Waseda University<br>
+                    </p>
+                    
+                    <p class="mini_jp">
+                      ペルー国立美術学校名誉教授・ハーヴァード大学客員芸術家・イェール大学客員芸術家・早稲田大学日米研究機構招聘研究員。国内外で30年に渡り個展80回開催。1985年以来、一貫して宇宙、生命、人間社会をテーマとする"Innerscape Series" を制作、発表を続けるとともに、芸術の教育的実践として世界各地でワークショップを開く。
+                    </p>
+                </div>
+
     </div>
     
 </div>
 
+    </div>
+  </div>
 </div>
 
 </body>
