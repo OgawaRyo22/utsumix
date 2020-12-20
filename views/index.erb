@@ -43,10 +43,12 @@
     <% @posts.each do |post| %>
     <div class="archive">
          <div class="ar_dis">
-         
-           <p class="ar_title"><%= post.title %></p>
-           <p class="ar_con"><%= post.content %></p>
-
+         <div class="midashi">
+ <p class="ar_date"><%= post.created_at %> (modifired in <%= post.updated_at%>)</p>
+         <p class="ar_title"><%= post.title %></p>
+                 </div>
+           <div class="ar_con"><%= post.content %></div>
+           <span class="ar_line"></span>
          </div>
     </div>
     <% end %>

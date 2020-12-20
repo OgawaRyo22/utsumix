@@ -11,7 +11,8 @@ html {
 }
 
 p{
-    line-height: 200%;
+    line-height: 180%;
+    letter-spacing: -1px;
 }
 
 *::-webkit-scrollbar{
@@ -76,13 +77,13 @@ body{
   grid-column: 2;
   height: 100%;
   display: grid;
-  grid-template-columns: 8% auto 8%;
+  grid-template-columns: 12% auto 12%;
   grid-template-rows: 100vh auto;
 }
 
 header{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-rows: 3% 7% auto 3%;
     margin-bottom: 8px;
@@ -149,7 +150,7 @@ box-shadow: inset -1px -1px 0 0px;
     display: grid;
     grid-column: 2;
 
-        grid-template-columns: 73% 2% 25%;
+        grid-template-columns: 70% 8% 22%;
     height: 100%;
     grid-template-rows: 25% 25% 25% 25%; 
     grid-row: 2;
@@ -171,10 +172,10 @@ box-shadow: inset -1px -1px 0 0px;
        font-family: "myFont1";
     border-bottom: 1px #fff solid;
     height: auto;
-    margin-bottom: 8px;
-       font-size: 48px;
+    margin-bottom: 48px;
+       font-size: 36q;
  
-    line-height: 48px;
+    line-height: 36px;
 }
 
 .archive{
@@ -182,7 +183,7 @@ box-shadow: inset -1px -1px 0 0px;
     display: grid;
     grid-template-columns: 100%;
     grid-column: 2;
-    height: 85%;
+    margin-bottom: 48px;
 }
 
 .ar_dis{
@@ -190,12 +191,40 @@ box-shadow: inset -1px -1px 0 0px;
         font-family: "myFont2";
 }
 
+.midashi{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ color: #fff;
+ align-items: flex-end;
+}
+
 .ar_title{
+ display: block;
  font-size: 48px;
+}
+
+.ar_date{
+ font-size: 16px;
+ display: block;
+ 
 }
 
 .ar_con{
  font-size: 16px;
+}
+
+.ar_line{
+ width: 100%;
+}
+
+.ar_line::before{
+ content: "";
+ width: 100%;
+ height: 1px;
+ background-color: #fff;
+ display: block;
+ margin-top: 16px;
 }
 
 .minipro{

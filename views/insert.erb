@@ -13,10 +13,14 @@
  padding: 0;
 }
 
+body{
+  background-color: #9e9e9e;
+}
+
 #content{
   width: 100vw;
   overflow: scrool;
-  background-color: #333; 
+  background-color: #9e9e9e; 
   display: grid;
   grid-template-columns: 12.5vw 75vw 12.5vw;
 }
@@ -24,40 +28,146 @@
 .insert{
   width: 100%;
   grid-column: 2;
-  box-shadow: inset -1px 1px 16px 2px #000000;
+  background-color: #9e9e9e;
+  margin-top: 8vh
 }
 
 input, textarea{
-  width: 100%;
-  display flex;
+  width: calc(100% - 8px);
+  display: flex;
+  border: none;
+      height: calc(100% - 8px);
+      overflow: scroll;
+      background-color: #9e9e9e;
 }
 
 .texting{
- height: 60vh;
+ height: 78%;
  overflow: scroll;
- width: 80%;
+ width: 100%;
+       box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2%;
+}
+
+.ed_texting{
+ height: 78%;
+ overflow: scroll;
+ width: 100%;
+       box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+align-items: center;
+      margin-bottom: 2%;
+
+}
+
+.ed_texting textarea, .texting textarea{
+      background-color: #9e9e9e;
+
+}
+
+
+.midashi{
+  height: 8%;
+  width: 100%;
+        box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+        background-color: #9e9e9e;  
+        margin-bottom: 2%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+}
+
+.postbut{
+  height: 8%;
+  width: 100%;
+      box-shadow: rgb(10, 10, 10) -2px -2px inset, rgb(255, 255, 255) 2px 2px inset, grey -4px -4px inset;
+      background-color: #9e9e9e;
+      cursor: pointer;
+      margin-bottom: 2%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+}
+
+.postbutd{
+  height: 100%;
+  width: 100%;
+      box-shadow: rgb(10, 10, 10) -2px -2px inset, rgb(255, 255, 255) 2px 2px inset, grey -4px -4px inset;
+      background-color: #9e9e9e;
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+
+}
+
+.postbutd:focus, .postbut:focus{
+  box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+    outline: none;
+
+}
+
+textarea:focus, input:focus{
+ outline: none;
+
 }
 
 .sinki{
   margin-bottom: 16vh;
-  box-shadow: inset -1px 1px 16px 2px #000000;
+      background-color: #9e9e9e;
+ display: flex;
+ flex-wrap: wrap;
+ height: 60vh;
+ justify-content: center;
+
 
 }
 
 .editing{
- overflow: scroll;
  height: 120vh;
-  box-shadow: inset -1px 1px 16px 2px #000000;
-
+      background-color: #9e9e9e;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
 }
 
 .ed_form{
- overflow:scroll;
  height: 60vh;
- margin-bottom: 8vh;
- width: 80%;
-  box-shadow: inset -1px 1px 16px 2px #000000;
+ margin-bottom: 4vh;
+ margin-top: 4vh;
+ width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ background-color: #9e9e9e;
+}
 
+.edi{
+  height: 96%;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.del{
+  height: 8%;
+  width: 100%;
+}
+
+.sin{
+ width: 100%;
+ height: 100%;
 }
 
 </style>
@@ -68,30 +178,37 @@ input, textarea{
 <div class="insert">
 
 <div class="sinki">
-  <form action="/post" autconmplete="off" method="post">
-    <input type="text" placeholder="記事タイトル" name="title">
+  <form class="sin" action="/post" autconmplete="off" method="post">
+    <div class="midashi">
+      <input type="text" placeholder="記事タイトル" name="title">
+    </div>
     <div class="texting">
       <textarea rows="100" cols="80" name="content">ここに内容を入力</textarea>
-   </div>
-    <input type="submit" value="投稿！">
- 
+    </div>
+    <div class="postbut">
+    <input  type="submit" value="投稿！">
+    </div>
   </form>
 </div>
 
   <div class="editing">
     <% @posts.each do |post| %>
       <div class="ed_form">
-    <form action="/post/<%= post.id %>" autconmplete="off" method="post">
-    <input type="text" value="<%= CGI.escapeHTML(post.title) %>" name="title">
-    <div class="texting">
+    <form class="edi" action="/post/<%= post.id %>" autconmplete="off" method="post">
+    <input class="midashi" type="text" value="<%= CGI.escapeHTML(post.title) %>" name="title">
+    <div class="ed_texting">
       <textarea rows="100" cols="80" name="content"><%= CGI.escapeHTML(post.content) %></textarea>
    
     </div>
+    <div class="postbut">
  <input type="submit" value="再投稿">
+    </div>
 
     </form>
-    <form action="/post/<%= post.id %>/delete" autconmplete="off" method="post">
-    <input type="submit" value="削除">
+    <form class="del" action="/post/<%= post.id %>/delete" autconmplete="off" method="post">
+      <div class="postbutd">
+        <input type="submit" value="削除">
+      </div>
   </form>
       </div>
 <% end %>
