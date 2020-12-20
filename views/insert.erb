@@ -8,6 +8,27 @@
 
 <style>
 
+@font-face {
+  font-family: "myFont";
+  src: url("assets/css/serif.woff") format('woff');
+}
+
+@font-face {
+  font-family: "myFont1";
+  src: url("assets/css/serif_bold.woff") format('woff');
+}
+
+@font-face {
+  font-family: "myFont2";
+  src: url("assets/css/sans.woff") format('woff');
+}
+
+@font-face {
+  font-family: "myFont3";
+  src: url("assets/css/sans_bold.woff") format('woff');
+}
+
+
 *{
  margin: 0;
  padding: 0;
@@ -175,7 +196,9 @@ textarea:focus, input:focus{
 <div id="content">
          
 
-<div class="insert">
+  <div class="insert">
+
+    <p style="font-family: myFont3; font-size: 48px;">新規投稿</p>
 
 <div class="sinki">
   <form class="sin" action="/post" autconmplete="off" method="post">
@@ -190,6 +213,9 @@ textarea:focus, input:focus{
     </div>
   </form>
 </div>
+
+    <p style="font-family: myFont3; font-size: 48px;">編集</p>
+
 
   <div class="editing">
     <% @posts.each do |post| %>
