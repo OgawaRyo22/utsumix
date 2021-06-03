@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>form_of_utumix</title>
+  <!-- jQuery-3.4.1以上必須のどこでも使えるruby投稿画面  -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
 <style>
+
+@font-face {
+  font-family: "myFont0";
+  src: url("assets/css/ms_sans_serif.woff2") format('woff');
+}
+
 
 @font-face {
   font-family: "myFont";
@@ -32,16 +40,51 @@
 *{
  margin: 0;
  padding: 0;
+ 
+}
+
+input::-webkit-scrollbar, textarea::-webkit-scrollbar {
+ display: none!important;  
 }
 
 body{
-  background-color: #9e9e9e;
+  background-color: #c0c0c0;
+  -webkit-font-smoothing: none;
+}
+
+li{
+
+  list-style-type: none;
+
+}
+
+textarea::selection{
+ background-color: #def1ff;
+}
+
+button{
+  border: none;
+  background-color: initial;
+  cursor: pointer;
+}
+
+button::selection{
+  background-color: initial;
+}
+
+button span::selection{
+  background-color: initial;
+}
+
+
+button:focus{
+outline: none;
 }
 
 #content{
   width: 100vw;
   overflow: scrool;
-  background-color: #9e9e9e; 
+  background-color: #c0c0c0; 
   display: grid;
   grid-template-columns: 12.5vw 75vw 12.5vw;
 }
@@ -49,70 +92,77 @@ body{
 .insert{
   width: 100%;
   grid-column: 2;
-  background-color: #9e9e9e;
+  background-color: #c0c0c0;
   margin-top: 8vh
 }
 
-input, textarea{
+textarea{
   width: calc(100% - 8px);
   display: flex;
   border: none;
-      height: calc(100% - 8px);
+      height: calc(100% - 33px);
       overflow: scroll;
-      background-color: #9e9e9e;
+      background-color: #00000000;
+}
+
+input{
+      background-color: #00000000;
+  border: none;
+
+}
+
+input[type=submit]{
+cursor: pointer;
 }
 
 .texting{
- height: 78%;
+ height: 66%;
  overflow: scroll;
  width: 100%;
-       box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+       box-shadow: rgb(255, 255, 255) -1px -1px inset, rgb(10, 10, 10) 1px 1px inset, grey 2px 2px inset, inset -2px -2px #dfdfdf;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
       margin-bottom: 2%;
 }
 
 .ed_texting{
- height: 78%;
+ height: 66%;
  overflow: scroll;
  width: 100%;
-       box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
+       box-shadow: rgb(255, 255, 255) -1px -1px inset, rgb(10, 10, 10) 1px 1px inset, grey 2px 2px inset, inset -2px -2px #dfdfdf;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-align-items: center;
-      margin-bottom: 2%;
+      margin-bottom: 32px;
 
 }
 
 .ed_texting textarea, .texting textarea{
-      background-color: #9e9e9e;
+      background-color: #c0c0c0;
 
 }
 
 
 .midashi{
-  height: 8%;
+  height: 55px;
   width: 100%;
-        box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
-        background-color: #9e9e9e;  
-        margin-bottom: 2%;
+        box-shadow: rgb(255, 255, 255) -1px -1px inset, rgb(10, 10, 10) 1px 1px inset, grey 2px 2px inset, inset -2px -2px #dfdfdf;
+        background-color: #c0c0c0;  
+        margin-bottom: 32px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
 
 }
 
 .postbut{
-  height: 8%;
+  height: 32px;
   width: 100%;
-      box-shadow: rgb(10, 10, 10) -2px -2px inset, rgb(255, 255, 255) 2px 2px inset, grey -4px -4px inset;
-      background-color: #9e9e9e;
+      box-shadow: rgb(10, 10, 10) -1px -1px inset, rgb(255, 255, 255) 1px 1px inset, grey -2px -2px inset, inset 2px 2px #dfdfdf;
+      background-color: #acaaff;
       cursor: pointer;
-      margin-bottom: 2%;
+      margin-bottom: 32px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -122,9 +172,9 @@ align-items: center;
 
 .postbutd{
   height: 100%;
-  width: 100%;
-      box-shadow: rgb(10, 10, 10) -2px -2px inset, rgb(255, 255, 255) 2px 2px inset, grey -4px -4px inset;
-      background-color: #9e9e9e;
+  width: 10%;
+      box-shadow: rgb(10, 10, 10) -1px -1px inset, rgb(255, 255, 255) 1px 1px inset, grey -2px -2px inset, inset 2px 2px #dfdfdf;
+  background-color: #d65151;
       cursor: pointer;
       display: flex;
       flex-wrap: wrap;
@@ -134,11 +184,20 @@ align-items: center;
 
 }
 
+.postbutd:active, .postbut:active{
+  box-shadow: rgb(255, 255, 255) -1px -1px inset, rgb(10, 10, 10) 1px 1px inset, grey 2px 2px inset, inset -2px -2px #dfdfdf;
+    outline: none;
+}
+
 .postbutd:focus, .postbut:focus{
-  box-shadow: rgb(255, 255, 255) -2px -2px inset, rgb(10, 10, 10) 2px 2px inset, grey 4px 4px inset;
     outline: none;
 
 }
+
+.postbutd input, .postbut input{
+    width: initial;
+}
+
 
 textarea:focus, input:focus{
  outline: none;
@@ -146,44 +205,46 @@ textarea:focus, input:focus{
 }
 
 .sinki{
-  margin-bottom: 16vh;
-      background-color: #9e9e9e;
+  margin-bottom: 64px;
+      background-color: #c0c0c0;
  display: flex;
  flex-wrap: wrap;
- height: 60vh;
+ height: 350px;
+ margin-top: 4vh;
  justify-content: center;
 
 
 }
 
 .editing{
- height: 120vh;
-      background-color: #9e9e9e;
+ height: auto;
+      background-color: #c0c0c0;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 }
 
 .ed_form{
- height: 60vh;
- margin-bottom: 4vh;
- margin-top: 4vh;
+ height: 350px;
+ margin-bottom: 120px;
+ margin-top: 8px;
  width: 100%;
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
- background-color: #9e9e9e;
+ background-color: #c0c0c0;
 }
 
 .edi{
-  height: 96%;
+  height: 100%;
   width: 100%;
-  margin-bottom: 3%;
+  margin-bottom: 32px;
 }
 
 .del{
-  height: 8%;
+  height: 32px;
   width: 100%;
+  margin-top: 32px;
 }
 
 .sin{
@@ -191,59 +252,521 @@ textarea:focus, input:focus{
  height: 100%;
 }
 
+.ed_d{
+ width: 100%;
+ height: 16px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+
+
+
+.select_d, .select_d form{
+  display: flex;
+}
+
+
+.select_d input{
+  display: flex;
+}
+
 </style>
 
-<div id="content">
-         
+
+
+<div id="content">      
+
+  
 
   <div class="insert">
 
-    <p style="font-family: myFont3; font-size: 48px;">新規投稿</p>
+    <p style="font-family: myFont3;">新規投稿</p>
 
 <div class="sinki">
   <form class="sin" action="/post" autconmplete="off" method="post">
+
+
     <div class="midashi">
-      <input type="text" placeholder="記事タイトル" name="title">
+
+            <div class="fp fpm font-prop2">
+    <ul>
+      <li><button type="button" class="fp_bold2"><span style="font-weight: bold;">B</span></button></li>
+      <li><button type="button" class="fp_italic2"><span style="font-style: italic;">I</span></button></li>
+      <li><button type="button" class="fp_stop2"><span style="text-decoration: underline;">U</span></button></li>
+      <li><button type="button" class="fp_under2"><span style="text-decoration: line-through;">T</span></button></li>
+      <li><button type="button" class="fp_color2"><input type="color"></button></li>
+      <li><button type="button" class="fp_note2"><span style="font-family: myFont1;">NOTE</span></button></li>
+
+      <li><button type="button" class="fp_other2"></button></li>
+    </ul>
+  </div>
+
+            <textarea rows="1" cols="80" class="f_title" name="title" placeholder="ここにタイトルを入力..."></textarea>
+          </div>
+
+          <div class="texting">
+            <div class="fp font-prop">
+    <ul>
+      <li><button type="button" class="fp_bold"><span style="font-weight: bold;">B</span></button></li>
+      <li><button type="button" class="fp_italic"><span style="font-style: italic;">I</span></button></li>
+      <li><button type="button" class="fp_stop"><span style="text-decoration: underline;">U</span></button></li>
+      <li><button type="button" class="fp_under"><span style="text-decoration: line-through;">T</span></button></li>
+      <li><button type="button" class="fp_color"><input type="color"></button></li>
+      <li><button type="button" class="fp_note"><span style="font-family: myFont1;">NOTE</span></button></li>
+
+      <li><button type="button" class="fp_other"></button></li>
+    </ul>
+  </div>
+
+      <textarea class="textarea" rows="100" cols="80" name="content" placeholder="ここに内容を入力"></textarea>
     </div>
-    <div class="texting">
-      <textarea rows="100" cols="80" name="content">ここに内容を入力</textarea>
-    </div>
-    <div class="postbut">
-    <input  type="submit" value="投稿！">
-    </div>
+    <label class="postbut">
+      <input type="submit" value="投稿！">
+    </label>
   </form>
 </div>
 
-    <p style="font-family: myFont3; font-size: 48px;">編集</p>
-
+<div class="ed_d">
+  <p style="font-family: myFont3;">編集</p>
+  <div class="select_d">
+    <form action="/date" autocomplete="off" method="post">
+      <input type="date" name="sedate">
+      <input type="submit" value="絞る">
+    </form>
+  </div>
+</div>
 
   <div class="editing">
     <% @posts.each do |post| %>
       <div class="ed_form">
-    <form class="edi" action="/post/<%= post.id %>" autconmplete="off" method="post">
-    <input class="midashi" type="text" value="<%= CGI.escapeHTML(post.title) %>" name="title">
-    <div class="ed_texting">
-      <textarea rows="100" cols="80" name="content"><%= CGI.escapeHTML(post.content) %></textarea>
-   
-    </div>
-    <div class="postbut">
- <input type="submit" value="再投稿">
-    </div>
+        <form class="edi" action="/post/<%= post.id %>" autconmplete="off" method="post">
+
+  <div class="midashi edx<%= post.id %>">
+            <div class="fp fpm font-prop<%= post.id %>">
+    <ul>
+      <li><button type="button" class="fpm_bold2"><span style="font-weight: bold;">B</span></button></li>
+      <li><button type="button" class="fpm_italic2"><span style="font-style: italic;">I</span></button></li>
+      <li><button type="button" class="fpm_stop2"><span style="text-decoration: underline;">U</span></button></li>
+      <li><button type="button" class="fpm_under2"><span style="text-decoration: line-through;">T</span></button></li>
+      <li><button type="button" class="fpm_color2"><input type="color"></button></li>
+      <li><button type="button" class="fpm_note2"><span style="font-family: myFont1;">NOTE</span></button></li>
+
+      <li><button type="button" class="fpm_other2"></button></li>
+    </ul>
+  </div>
+
+            <textarea rows="1" cols="80" class="f_titlet" name="title"><%= CGI.escapeHTML(post.title) %></textarea>
+          </div>
+
+          <div class="ed_texting edx<%= post.id %>">
+            <div class="fp font-prop<%= post.id %>">
+    <ul>
+      <li><button type="button" class="fpm_bold"><span style="font-weight: bold;">B</span></button></li>
+      <li><button type="button" class="fpm_italic"><span style="font-style: italic;">I</span></button></li>
+      <li><button type="button" class="fpm_stop"><span style="text-decoration: underline;">U</span></button></li>
+      <li><button type="button" class="fpm_under"><span style="text-decoration: line-through;">T</span></button></li>
+      <li><button type="button" class="fpm_color"><input type="color"></button></li>
+      <li><button type="button" class="fpm_note"><span style="font-family: myFont1;">NOTE</span></button></li>
+
+      <li><button type="button" class="fpm_other"></button></li>
+    </ul>
+  </div>
+
+
+      <textarea class="textareat" rows="100" cols="80" name="content"><%= CGI.escapeHTML(post.content) %></textarea>
+          </div>
+    <label class="postbut">
+      <input type="submit" value="再投稿">
+    </label>
 
     </form>
     <form class="del" action="/post/<%= post.id %>/delete" autconmplete="off" method="post">
-      <div class="postbutd">
-        <input type="submit" value="削除">
-      </div>
+      <label class="postbutd">
+      <input type="submit" value="削除">
+      </label>
   </form>
       </div>
+
+  <script>
+    //  '&': '&amp;',
+    //  "'": '&#x27;',
+    //  '`': '&#x60;',
+    //  '"': '&quot;',
+    //  '<': '&lt;',
+    //  '>': '&gt;',
+var boldl = '\<span style=\"font-family: myFont3;\"\>'
+var boldg = '\</span\>'
+var ital = '\<span style=\"font-style: italic;\"\>'
+var itag = '\</span\>'
+var stol = '\<span style=\"text-decoration: underline;\"\>'
+var stog = '\</span\>'
+var undl = '\<span style=\"text-decoration: line-through;\"\>'
+var undg = '\</span\>'
+//var coll = '\<span style=\"color:' + color + '; background-color:' + bgcolor + ';\"\>'
+//var colg = '\</span\>'
+var notl = '\<p style=\"font-family: myFont;\"\>'
+var notg = '\</p\>'
+var notbl = '\<span style=\"font-family: myFont1;\"\>'
+var notbg = '\</span\>'
+
+
+
+//var i = textarea.length
+
+$('.font-prop<%= post.id %> .fpm_bold').click(function(){
+  var textarea = document.querySelector(".edx<%= post.id %> .textareat");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = boldl + range + boldg;
+ textarea.value = beforeNode + insertNode + afterNode;
+
+});
+
+$('.font-prop<%= post.id %> .fpm_bold2').click(function(){
+  var title = document.querySelector(".edx<%= post.id %> .f_titlet");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = boldl + range + boldg;
+ title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_italic').click(function(){
+ var textarea = document.querySelector(".edx<%= post.id %> .textareat");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = ital + range + itag;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_italic2').click(function(){
+ var title = document.querySelector(".edx<%= post.id %> .f_titlet");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = ital + range + itag;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_stop').click(function(){
+ var textarea = document.querySelector(".edx<%= post.id %> .textareat");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = stol + range + stog;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_stop2').click(function(){
+ var title = document.querySelector(".edx<%= post.id %> .f_titlet");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = stol + range + stog;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_under').click(function(){
+ var textarea = document.querySelector(".edx<%= post.id %> .textareat");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = undl + range + undg;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_under2').click(function(){
+ var title = document.querySelector(".edx<%= post.id %> .f_titlet");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = undl + range + undg;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_note').click(function(){
+ var textarea = document.querySelector(".edx<%= post.id %> .textareat");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = notl + range + notg;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.font-prop<%= post.id %> .fpm_note2').click(function(){
+ var title = document.querySelector(".edx<%= post.id %> .f_titlet");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = notbl + range + notbg;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+
+
+
+  </script>
+
+
 <% end %>
+
+  </div>
 
   </div>
 
 </div>
 
-</div>
+
+
+<style>
+
+.fp{
+ width: calc(100% - 4px);
+ height: 25px;
+ margin-top: 2px;
+
+}
+
+.fpm{
+ width: calc(100% - 4px);
+ height: 25px;
+}
+
+
+.font-prop{
+  left: 20px;
+  top: 50px;
+}
+
+.font-propa{
+ left: 20px;
+ top: 100px;
+}
+
+
+
+.fp ul{
+  display: grid;
+  grid-template-columns: 25px 25px 25px 25px 30px 60px auto;
+  width: 100%;
+  height: 100%;
+}
+
+.fp ul li{
+      box-shadow: rgb(10, 10, 10) -1px -1px inset, rgb(255, 255, 255) 1px 1px inset, grey -2px -2px inset, inset 2px 2px #dfdfdf;
+  background-color: #c0c0c0;
+      width: 100%;
+      height: 100%;
+}
+
+.fp ul li:active{
+         box-shadow: rgb(10, 10, 10) -1px -1px inset, rgb(255, 255, 255) 1px 1px inset, grey -2px -2px inset, inset 2px 2px #dfdfdf;
+
+}
+
+.fp button{
+  display: block;
+      width: 100%;
+      height: 100%;
+}
+
+input[type=color]{
+ width: 100%; 
+ height: 100%;
+ border: none;
+}
+
+</style>
+
+  <script>
+
+
+    //  '&': '&amp;',
+    //  "'": '&#x27;',
+    //  '`': '&#x60;',
+    //  '"': '&quot;',
+    //  '<': '&lt;',
+    //  '>': '&gt;',
+
+var boldl = '\<span style=\"font-family: myFont3;\"\>'
+var boldg = '\</span\>'
+var ital = '\<span style=\"font-style: italic;\"\>'
+var itag = '\</span\>'
+var stol = '\<span style=\"text-decoration: underline;\"\>'
+var stog = '\</span\>'
+var undl = '\<span style=\"text-decoration: line-through;\"\>'
+var undg = '\</span\>'
+//var coll = '\<span style=\"color:' + color + '; background-color:' + bgcolor + ';\"\>'
+//var colg = '\</span\>'
+var notl = '\<p style=\"font-family: myFont;\"\>'
+var notg = '\</p\>'
+var notbl = '\<span style=\"font-family: myFont1;\"\>'
+var notbg = '\</span\>'
+
+
+//var i = textarea.length
+
+     
+
+$('.fp_bold').click(function(){
+ var textarea = document.querySelector(".textarea");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = boldl + range + boldg;
+    textarea.value = beforeNode + insertNode + afterNode;
+
+});
+
+$('.fp_bold2').click(function(){
+ var title = document.querySelector(".f_title");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = boldl + range + boldg;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_italic').click(function(){
+ var textarea = document.querySelector(".textarea");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = ital + range + itag;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_italic2').click(function(){
+ var title = document.querySelector(".f_title");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = ital + range + itag;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_stop').click(function(){
+ var textarea = document.querySelector(".textarea");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = stol + range + stog;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_stop2').click(function(){
+ var title = document.querySelector(".f_title");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = stol + range + stog;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_under').click(function(){
+ var textarea = document.querySelector(".textarea");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = undl + range + undg;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_under2').click(function(){
+ var title = document.querySelector(".f_title");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = undl + range + undg;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_note').click(function(){
+ var textarea = document.querySelector(".textarea");
+ var pos_start = textarea.selectionStart;
+ var pos_end = textarea.selectionEnd;
+ var val = textarea.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = notl + range + notg;
+    textarea.value = beforeNode + insertNode + afterNode;
+});
+
+$('.fp_note2').click(function(){
+ var title = document.querySelector(".f_title");
+ var pos_start = title.selectionStart;
+ var pos_end = title.selectionEnd;
+ var val = title.value;
+ var range = val.slice(pos_start, pos_end);
+ var beforeNode = val.slice(0, pos_start);
+ var afterNode = val.slice(pos_end);
+ var insertNode = notbl + range + notbg;
+    title.value = beforeNode + insertNode + afterNode;
+});
+
+
+
+
+  </script>
+
 
 </body>
 </html>

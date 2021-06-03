@@ -44,11 +44,16 @@ get '/activities' do
 end
 
 get '/post' do 
-
+ search_date = '2020-12-13'
+ #@posts = Post.where(created_at: search_date.in_time_zone.all_day)
  @posts = Post.all
  erb :insert
 
 end
+
+#post '/date' do
+# sedate: params[:seaer]
+#end
 
 post '/post' do 
   post = Post.create({
